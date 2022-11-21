@@ -1,0 +1,142 @@
+
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자동차 정보 관리 시스템</title>
+    <link rel="icon" href="favicon.png" type="image/gif">
+
+    <!-- require jquery and bootstrap scripts -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <!-- adding style here -->
+    <style type="text/css">
+      header{
+        background-color: #242943;
+        font-size:20px;
+        padding:15px;
+      }
+      header, .form-group{
+        margin-bottom: 3%;
+      }
+      .form-group{
+        width:50%;
+      }
+      #body{
+        margin-left:3%;
+        margin-right:3%;
+      }
+      .form-control{
+        margin: 8px;
+      }
+      #right_header{
+        width:20%;
+        font-size:15px;
+        margin-right:0px;
+        color:#A6A6A6;
+      }
+      #left_header{
+        margin-left:0;
+        width:40%;
+        display:inline-block;
+        color:#A6A6A6;
+
+      } 
+      #id {
+        width:49%;
+        display: inline-block;
+      }
+      table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+      }
+      td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+      }
+      tr:nth-child(even) {
+          background-color: #dddddd;
+      }
+    </style>
+</head>
+<body ng-app="application" ng-controller="appController">
+<header>
+    <div id="left_header">자동차 정보 관리 시스템</div>
+    <i id="right_header">호서대학교 컴퓨터공학부</i>
+</header>
+<div id="body">
+    <div class="form-group">
+        <label>모든 자동차 조회</label> 
+        <!--
+          <p><input id="queryAllCar" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllCar()"></p>
+        -->
+        <p><input id="queryAllCars" type="submit" value="조회" class="btn btn-primary" ng-click="queryAllCars()"></p>
+    </div>
+
+    <div id="all_car"></div>
+    <!--   <table id="all_car" class="table" align="center">
+
+        <tr>
+          <th>ID</th>
+          <th>Color</th>
+          <th>Make</th>
+          <th>Model</th>
+          <th>Owner</th>
+        </tr>
+
+        <tr ng-repeat="car in all_car">
+          <td>{{car.Key}}</td>
+          <td>{{car.color}}</td>
+          <td>{{car.make}}</td>
+          <td>{{car.model}}</td>
+          <td>{{car.owner}}</td>
+        </tr>
+      </table> -->
+
+    <div class="form-group">
+        <label>자동차 조회</label><br>
+        <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Car Id</h5>
+
+        검색할 차량번호를 입력해주세요:
+        <input id="queryName" class="form-control" type="text" value="CAR0" ng-model="car_id">
+        <input id="queryCar" type="submit" value="조회" class="btn btn-primary" >
+    </div>
+
+    <div id="query_car_content">
+        <table  class="table" align="center">
+
+            <tr>
+                <th>Color</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Owner</th>
+                <th>Repair</th>
+                <th>Carcenter</th>
+            </tr>
+
+            <tr id="query_car">
+                <td>{{car.color}}</td>
+                <td>{{car.make}}</td>
+                <td>{{car.model}}</td>
+                <td>{{car.owner}}</td>
+                <td>{{car.repair}}</td>
+                <td>{{car.carcenter}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+
+</div>
+</body>
+<!-- requiring the angular page
+<script type="text/javascript" src="app.js"> </script>-->
+<script type="text/javascript" src="my.js"> </script>
+</html>
